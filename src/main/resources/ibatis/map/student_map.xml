@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+  <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+  			"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Student">
+
+	<!-- 定义别名，使用时就可省略包名 -->
+	<typeAlias alias="Student" type="pojo.Student" />
+
+	<!-- 查看所有记录 -->
+	<select id="getAll" resultClass="Student">
+		select * from student
+	</select>
+
+	<!-- 根据ID查询 -->
+	<select id="getById" parameterClass="Long" resultClass="Student">
+		select *
+		from student where stuId=#stuId#
+	</select>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterClass="Student">
+		insert into
+		student(stuId,stuName,stuGender,stuAge)
+		values(#stuId#,#stuName#,#stuGender#,#stuAge#)
+	</insert>
+
+	<!-- 修改 -->
+	<update id="updateById" parameterClass="long">
+		update student
+		set
+		stuName='xiugainame'
+		where stuId=#stuId#
+	</update>
+
+	<!-- 删除 -->
+	<delete id="deleteAll" parameterClass="Student">
+		delete from student where
+		stuId=#stuId#
+	</delete>
+
+</sqlMap>
